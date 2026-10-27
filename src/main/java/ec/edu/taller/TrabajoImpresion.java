@@ -1,7 +1,7 @@
 package ec.edu.taller;
 
 /** Datos de un trabajo de impresion. Menor numero = mayor prioridad. */
-public class TrabajoImpresion {
+public class TrabajoImpresion implements Comparable<TrabajoImpresion> {
     private String codigo;
     private String solicitante;
     private String documento;
@@ -13,22 +13,32 @@ public class TrabajoImpresion {
         this.solicitante = solicitante;
         this.documento = documento;
         this.prioridad = prioridad;
-        this.estado = "PENDIENTE";
+        this.estado = "PENDIENDTE";
     }
 
     public String getCodigo() { return codigo; }
     public void setCodigo(String codigo) { this.codigo = codigo; }
+
     public String getSolicitante() { return solicitante; }
     public void setSolicitante(String solicitante) { this.solicitante = solicitante; }
+
     public String getDocumento() { return documento; }
     public void setDocumento(String documento) { this.documento = documento; }
+
     public int getPrioridad() { return prioridad; }
     public void setPrioridad(int prioridad) { this.prioridad = prioridad; }
+
     public String getEstado() { return estado; }
     public void setEstado(String estado) { this.estado = estado; }
 
     @Override
     public String toString() {
         return codigo + " | " + solicitante + " | " + documento + " | " + prioridad + " | " + estado;
+    }
+
+    @Override
+    public int compareTo(TrabajoImpresion o) {
+        // Menor número = mayor prioridad (Orden ascendente)
+        return Integer.compare(this.prioridad, o.prioridad);
     }
 }
